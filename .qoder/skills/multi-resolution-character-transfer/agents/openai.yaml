@@ -1,0 +1,13 @@
+interface:
+  display_name: Multi-Resolution Character Transfer
+  short_description: Preserve one character across live action, 2D, and progressively
+    lower-resolution pixel states.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

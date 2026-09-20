@@ -1,0 +1,8 @@
+# Qoder のローカル状態は skills だけ追跡する
+.qoder/*
+!.qoder/skills/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
