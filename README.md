@@ -29,17 +29,26 @@ Preserves one character's identity while changing only the rendering medium and 
 
 ## 設置 / Install
 
-このリポジトリをプロジェクトのルートに展開するか、Skill フォルダだけをコピーしてください。
+Qoder がプロジェクト内で Skill を読み込むパスは `<project>/.qoder/skills/<name>/` です。このリポジトリの正本は `skills/<name>/` に置くので、そこへ写すかリンクします。
 
 ```bash
-# 対象プロジェクトのルートで
-git clone https://github.com/ozekimasaki/multi-resolution-character-transfer.git .
+# 1) リポジトリを取得
+git clone https://github.com/ozekimasaki/multi-resolution-character-transfer.git
 
-# または、Skill フォルダだけを置きたい場合
-cp -r .qoder/skills/multi-resolution-character-transfer <your-project>/.qoder/skills/
+# 2) 対象プロジェクトへコピー（手軽）
+cp -r multi-resolution-character-transfer/skills/multi-resolution-character-transfer \
+      <your-project>/.qoder/skills/
 ```
 
-全プロジェクト共通で使いたい場合は `~/.qoder/skills/multi-resolution-character-transfer/` に置きます。
+編集しながら使いたい場合は junction で正本を直接参照できます（Windows・管理者権限不要）。
+
+```powershell
+New-Item -ItemType Junction `
+  -Path "<your-project>\.qoder\skills\multi-resolution-character-transfer" `
+  -Target "<clone>\skills\multi-resolution-character-transfer"
+```
+
+全プロジェクト共通で使いたい場合は `<project>` の代わりに `~/.qoder/skills/` へ置いてください。
 
 ## 使い方 / Usage
 
@@ -47,21 +56,26 @@ cp -r .qoder/skills/multi-resolution-character-transfer <your-project>/.qoder/sk
 /multi-resolution-character-transfer
 ```
 
-自然言語でも起動します。例えば「このキャラがモニターに入って、段々ドットが荒くなって、元に戻ってくる30秒のプロンプト作って」にキャラクター画像を添付します。
+自然言語でも起動します。キャラクター画像を添付して「このキャラがモニターに入って、段々ドットが荒くなって、元に戻ってくる30秒のプロンプト作って」と頼む形です。
 
 最小入力はキャラクターの画像または明確な描写です。加えて尺・アスペクト比・移動経路（どの機器を渡るか）・使いたい動画モデル・最後のオチを指定するほど結果が安定します。
 
 ## 構成 / Repository layout
 
 ```
-.qoder/skills/multi-resolution-character-transfer/
-├── SKILL.md                      本文（ワークフロー手順 1〜9）
-├── agents/openai.yaml            ChatGPT / Codex 向けのインターフェース定義（他環境は無視可）
-├── assets/icon.svg               アイコン
-└── references/
-    ├── prompt-patterns.md        状態別プロンプトの再利用パターン集
-    └── renoise-submission.md     公開例・入出力・品質チェックリスト
+├── README.md
+├── LICENSE                       MIT
+├── .gitignore
+└── skills/multi-resolution-character-transfer/
+    ├── SKILL.md                  本文（ワークフロー手順 1〜9）
+    ├── agents/openai.yaml        ChatGPT / Codex 向けのインターフェース定義（他環境は無視可）
+    ├── assets/icon.svg           アイコン
+    └── references/
+        ├── prompt-patterns.md    状態別プロンプトの再利用パターン集
+        └── renoise-submission.md 公開例・入出力・品質チェックリスト
 ```
+
+このリポジトリ自身で Skill を生やすときは、`.qoder/skills/multi-resolution-character-transfer` を `skills/` 側へ junction したものをローカルに置いています（`.qoder/` は追跡外）。
 
 ## Notes
 
@@ -71,4 +85,4 @@ cp -r .qoder/skills/multi-resolution-character-transfer <your-project>/.qoder/sk
 
 ## License
 
-まだ設定していません。追加する場合はリポジトリ直下に `LICENSE` を置いてください。
+[MIT](LICENSE) です。詳細は LICENSE を参照してください。

@@ -1,6 +1,5 @@
-# Qoder のローカル状態は skills だけ追跡する
-.qoder/*
-!.qoder/skills/
+# Qoder のローカル配線は追跡しない（skills/ が正本）
+.qoder/
 
 # OS
 .DS_Store
