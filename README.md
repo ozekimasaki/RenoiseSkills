@@ -33,10 +33,10 @@ Qoder がプロジェクト内で Skill を読み込むパスは `<project>/.qod
 
 ```bash
 # 1) リポジトリを取得
-git clone https://github.com/ozekimasaki/multi-resolution-character-transfer.git
+git clone https://github.com/ozekimasaki/RenoiseSkills.git
 
 # 2) 対象プロジェクトへコピー（手軽）
-cp -r multi-resolution-character-transfer/skills/multi-resolution-character-transfer \
+cp -r RenoiseSkills/skills/multi-resolution-character-transfer \
       <your-project>/.qoder/skills/
 ```
 
